@@ -8,9 +8,7 @@ go get -u -v github.com/shura1014/acl
 ### api使用
 ```go
 func TestIPNet(t *testing.T) {
-	acl := &BuiltinCIDR{
-		cidrs: make([]net.IPNet, 0),
-	}
+	acl := BuiltinAcl()
 	acl.ParseAclNode("2001:db8::/96")
 	acl.ParseAclNode("192.168.1.0/28")
 	acl.ParseAclNode("::1")

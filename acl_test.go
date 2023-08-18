@@ -2,15 +2,12 @@ package acl
 
 import (
 	"fmt"
-	"net"
 	"testing"
 )
 
 func TestAcl(t *testing.T) {
 
-	s := &SourceAddressControl{
-		aclNodes: make([]aclNode, 0),
-	}
+	s := Default()
 
 	s.ParseAclNode("2001:db8::/96")
 	s.ParseAclNode("192.168.1.0/28")
@@ -46,9 +43,7 @@ func TestAcl(t *testing.T) {
 }
 
 func TestIPNet(t *testing.T) {
-	acl := &BuiltinCIDR{
-		cidrs: make([]net.IPNet, 0),
-	}
+	acl := BuiltinAcl()
 	acl.ParseAclNode("2001:db8::/96")
 	acl.ParseAclNode("192.168.1.0/28")
 	acl.ParseAclNode("::1")
